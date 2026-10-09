@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="header">
+        <h1>gaslight.exe</h1>
+        <div class="status-indicator">REALITY STATUS: <span id="status-text">QUESTIONABLE</span></div>
+    </div>
+    
+    <div class="controls">
+        <label class="toggle-container">
+            Master Enable
+            <input type="checkbox" id="master-toggle">
+            <span class="checkmark"></span>
+        </label>
+        
+        <div class="setting-group">
+            <label>Personality</label>
+            <select id="personality">
+                <option value="passive-aggressive">Passive-Aggressive</option>
+                <option value="paranoid">Paranoid Internet</option>
+                <option value="cosmic-horror">Cosmic Horror</option>
+                <option value="evil-corp">Evil Corporate</option>
+            </select>
+        </div>
+
+        <div class="setting-group">
+            <label>Chaos Intensity (<span id="intensity-val">60</span>)</label>
+            <input type="range" id="intensity" min="0" max="100" value="60">
+        </div>
+
+        <label class="toggle-container">
+            Sound Effects
+            <input type="checkbox" id="sound-toggle">
+            <span class="checkmark"></span>
+        </label>
+
+        <div class="setting-group">
+            <label>Feature Toggles</label>
+            <label class="toggle-container small">
+                Text Replacement
+                <input type="checkbox" id="text-replacement-toggle">
+                <span class="checkmark"></span>
+            </label>
+            <label class="toggle-container small">
+                Visual Effects
+                <input type="checkbox" id="visual-effects-toggle">
+                <span class="checkmark"></span>
+            </label>
+            <label class="toggle-container small">
+                Random Events
+                <input type="checkbox" id="random-events-toggle">
+                <span class="checkmark"></span>
+            </label>
+            <label class="toggle-container small">
+                Progressive Escalation
+                <input type="checkbox" id="escalation-toggle">
+                <span class="checkmark"></span>
+            </label>
+            <label class="toggle-container small">
+                Memory System
+                <input type="checkbox" id="memory-toggle">
+                <span class="checkmark"></span>
+            </label>
+            <label class="toggle-container small">
+                Dynamic Distortion
+                <input type="checkbox" id="distortion-toggle">
+                <span class="checkmark"></span>
+            </label>
+        </div>
+
+        <div class="setting-group">
+            <label>Accessibility</label>
+            <label class="toggle-container small">
+                Accessibility Mode
+                <input type="checkbox" id="accessibility-toggle">
+                <span class="checkmark"></span>
+            </label>
+            <label class="toggle-container small">
+                Reduce Motion
+                <input type="checkbox" id="reduce-motion-toggle">
+                <span class="checkmark"></span>
+            </label>
+        </div>
+        
+        <div class="stage-info">
+            <p>STAGE: <span id="stage-name">NORMAL</span></p>
+        </div>
+        
+        <div class="actions">
+            <button id="open-options">Settings & Story Log</button>
+        </div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,418 @@
+/* YouTube UI Reskins based on personality */
+
+/* 1. PARANOID (Analog Horror / Glitch / Flipped Layout) */
+html.theme-paranoid {
+    --yt-spec-base-background: #050000 !important;
+    --yt-spec-raised-background: #110000 !important;
+    --yt-spec-menu-background: #110000 !important;
+    --yt-spec-text-primary: #ff3333 !important;
+    --yt-spec-text-secondary: #aa1111 !important;
+    --yt-spec-brand-button-background: #550000 !important;
+    --yt-spec-badge-chip-background: #330000 !important;
+    --yt-spec-icon-active-other: #ff0000 !important;
+    --yt-spec-icon-inactive: #880000 !important;
+    --ytd-searchbox-background: #220000 !important;
+}
+
+/* Paranoid - LOW INTENSITY: Subtle color changes only */
+html.theme-paranoid.intensity-low ytd-app {
+    filter: sepia(10%) saturate(90%);
+}
+
+/* Paranoid - MEDIUM INTENSITY: Add minor animations */
+html.theme-paranoid.intensity-medium ytd-app {
+    animation: paranoid-glitch 15s infinite;
+}
+
+@keyframes paranoid-glitch {
+    0%, 97%, 100% { transform: translate(0, 0); filter: none; }
+    98% { transform: translate(-1px, 0.5px); filter: hue-rotate(45deg); }
+    99% { transform: translate(1px, -0.5px); filter: hue-rotate(-45deg); }
+}
+
+html.theme-paranoid.intensity-medium ytd-guide-entry-renderer:hover {
+    animation: text-jitter 0.5s;
+}
+
+@keyframes text-jitter {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-0.5px); }
+    75% { transform: translateX(0.5px); }
+}
+
+/* Paranoid - HIGH INTENSITY: Full glitch effects */
+html.theme-paranoid.intensity-high ytd-app {
+    animation: paranoid-glitch-aggressive 8s infinite;
+}
+
+@keyframes paranoid-glitch-aggressive {
+    0%, 95%, 100% { transform: translate(0, 0); filter: none; }
+    96% { transform: translate(-2px, 1px); filter: hue-rotate(90deg); }
+    97% { transform: translate(2px, -1px); filter: hue-rotate(-90deg); }
+    98% { transform: translate(-1px, -1px); filter: contrast(1.2); }
+    99% { transform: translate(1px, 1px); filter: brightness(1.2); }
+}
+
+html.theme-paranoid.intensity-high ytd-guide-entry-renderer {
+    animation: text-jitter-constant 5s infinite;
+}
+
+@keyframes text-jitter-constant {
+    0%, 90%, 100% { transform: translateX(0); }
+    91% { transform: translateX(-1px); }
+    92% { transform: translateX(1px); }
+    93% { transform: translateX(-1px); }
+    94% { transform: translateX(1px); }
+}
+
+html.theme-paranoid.intensity-high ytd-thumbnail:hover img {
+    filter: invert(1) hue-rotate(180deg);
+    animation: thumbnail-glitch 0.3s infinite;
+}
+
+@keyframes thumbnail-glitch {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(-2px, 2px); }
+    50% { transform: translate(2px, -2px); }
+    75% { transform: translate(-2px, -2px); }
+    100% { transform: translate(2px, 2px); }
+}
+
+html.theme-paranoid.intensity-high #ytd-masthead {
+    border-bottom: 2px solid #ff0000 !important;
+    animation: red-pulse 2s infinite;
+}
+
+@keyframes red-pulse {
+    0%, 100% { border-color: #ff0000; }
+    50% { border-color: #880000; }
+}
+
+html.theme-paranoid.intensity-high ytd-button-renderer yt-button-shape:hover {
+    background: #ff0000 !important;
+    color: #000 !important;
+    animation: button-flash 0.2s infinite;
+}
+
+@keyframes button-flash {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Safely swap video and sidebar using flex order */
+html.theme-paranoid ytd-watch-flexy #columns {
+    display: flex !important;
+}
+html.theme-paranoid ytd-watch-flexy #primary {
+    order: 2 !important;
+    margin-left: 24px !important;
+}
+html.theme-paranoid ytd-watch-flexy #secondary {
+    order: 1 !important;
+    margin-right: 24px !important;
+}
+
+
+/* 2. COSMIC HORROR (Ghost in the machine) */
+html.theme-cosmic-horror {
+    --yt-spec-base-background: #030508 !important;
+    --yt-spec-raised-background: #080a10 !important;
+    --yt-spec-menu-background: #0d1018 !important;
+    --yt-spec-text-primary: #8a9bb8 !important;
+    --yt-spec-text-secondary: #4a5a70 !important;
+    --yt-spec-brand-button-background: #121820 !important;
+    --yt-spec-badge-chip-background: #1a2030 !important;
+    --yt-spec-icon-active-other: #6a7a90 !important;
+    --yt-spec-icon-inactive: #3a4a50 !important;
+    --ytd-searchbox-background: #121820 !important;
+}
+
+/* Cosmic Horror - LOW INTENSITY: Subtle color shifts */
+html.theme-cosmic-horror.intensity-low ytd-app {
+    filter: sepia(8%) saturate(90%) hue-rotate(220deg);
+}
+
+/* Cosmic Horror - MEDIUM INTENSITY: Add eerie UI elements */
+html.theme-cosmic-horror.intensity-medium ytd-app {
+    filter: sepia(12%) saturate(85%) hue-rotate(230deg);
+}
+
+html.theme-cosmic-horror.intensity-medium ytd-guide-entry-renderer:hover {
+    background: rgba(90, 110, 140, 0.12) !important;
+}
+
+html.theme-cosmic-horror.intensity-medium ytd-thumbnail:hover img {
+    filter: brightness(1.05) contrast(1.1) hue-rotate(15deg);
+    box-shadow: 0 0 10px rgba(90, 110, 140, 0.3);
+}
+
+html.theme-cosmic-horror.intensity-medium #video-title:hover {
+    color: #a0b0c8 !important;
+    text-shadow: 0 0 8px rgba(160, 176, 200, 0.5);
+}
+
+/* Cosmic Horror - HIGH INTENSITY: Full ghostly effects */
+html.theme-cosmic-horror.intensity-high ytd-app {
+    filter: sepia(15%) saturate(80%) hue-rotate(230deg);
+}
+
+html.theme-cosmic-horror.intensity-high ytd-guide-entry-renderer:hover {
+    background: rgba(90, 110, 140, 0.15) !important;
+    filter: blur(0.5px);
+}
+
+html.theme-cosmic-horror.intensity-high ytd-thumbnail:hover img {
+    filter: brightness(1.1) contrast(1.2) hue-rotate(20deg);
+    box-shadow: 0 0 15px rgba(90, 110, 140, 0.4);
+}
+
+html.theme-cosmic-horror.intensity-high #ytd-masthead {
+    background: linear-gradient(180deg, #030508 0%, #080a10 100%) !important;
+    border-bottom: 1px solid rgba(90, 110, 140, 0.2) !important;
+}
+
+html.theme-cosmic-horror.intensity-high ytd-topbar-menu-button-renderer {
+    filter: drop-shadow(0 0 8px rgba(90, 110, 140, 0.5));
+}
+
+html.theme-cosmic-horror.intensity-high #video-title:hover {
+    color: #a0b0c8 !important;
+    text-shadow: 0 0 10px rgba(160, 176, 200, 0.6);
+}
+
+html.theme-cosmic-horror.intensity-high ytd-guide-renderer {
+    animation: cosmic-breathe 8s ease-in-out infinite;
+}
+
+@keyframes cosmic-breathe {
+    0%, 100% { opacity: 0.9; }
+    50% { opacity: 0.95; }
+}
+
+html.theme-cosmic-horror.intensity-high ytd-menu-renderer button:hover {
+    background: rgba(90, 110, 140, 0.2) !important;
+    filter: blur(0.3px);
+}
+
+html.theme-cosmic-horror.intensity-high ytd-button-renderer yt-button-shape:hover {
+    background: rgba(90, 110, 140, 0.15) !important;
+}
+
+html.theme-cosmic-horror.intensity-high ytd-playlist-panel-renderer #progress-bar {
+    background: linear-gradient(90deg, #3a4a50, #6a7a90, #3a4a50) !important;
+    box-shadow: 0 0 10px rgba(90, 110, 140, 0.4);
+}
+
+
+/* 3. EVIL CORP (Cyberpunk / Rogue OS) */
+html.theme-evil-corp {
+    --yt-spec-base-background: #000511 !important;
+    --yt-spec-raised-background: #001122 !important;
+    --yt-spec-menu-background: #001122 !important;
+    --yt-spec-text-primary: #00ffcc !important;
+    --yt-spec-text-secondary: #00aa88 !important;
+    --yt-spec-brand-button-background: #004455 !important;
+    --yt-spec-badge-chip-background: #003344 !important;
+    --yt-spec-icon-active-other: #00ffcc !important;
+    --yt-spec-icon-inactive: #005566 !important;
+    --ytd-searchbox-background: #001122 !important;
+}
+
+/* Evil Corp - LOW INTENSITY: Subtle color changes */
+html.theme-evil-corp.intensity-low ytd-app {
+    filter: saturate(110%) hue-rotate(180deg);
+}
+
+/* Evil Corp - MEDIUM INTENSITY: Terminal font + subtle grid */
+html.theme-evil-corp.intensity-medium ytd-app {
+    font-family: 'Consolas', 'Courier New', monospace !important;
+}
+
+html.theme-evil-corp.intensity-medium ytd-guide-entry-renderer:hover {
+    background: rgba(0, 255, 204, 0.08) !important;
+    border-left: 2px solid rgba(0, 255, 204, 0.5);
+}
+
+html.theme-evil-corp.intensity-medium #video-title:hover {
+    color: #00ffcc !important;
+    text-shadow: 0 0 5px rgba(0, 255, 204, 0.5);
+}
+
+html.theme-evil-corp.intensity-medium ytd-button-renderer yt-button-shape {
+    border: 1px solid rgba(0, 255, 204, 0.5) !important;
+    background: transparent !important;
+    color: #00ffcc !important;
+}
+
+/* Evil Corp - HIGH INTENSITY: Full cyberpunk effects */
+html.theme-evil-corp.intensity-high ytd-app {
+    font-family: 'Consolas', 'Courier New', monospace !important;
+}
+
+html.theme-evil-corp.intensity-high ytd-app::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 999999;
+    background-image:
+        linear-gradient(rgba(0, 255, 204, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 204, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+}
+
+html.theme-evil-corp.intensity-high ytd-guide-entry-renderer:hover {
+    background: rgba(0, 255, 204, 0.1) !important;
+    border-left: 3px solid #00ffcc;
+    box-shadow: 0 0 10px rgba(0, 255, 204, 0.3);
+}
+
+html.theme-evil-corp.intensity-high #video-title:hover {
+    color: #00ffcc !important;
+    text-shadow: 0 0 8px #00ffcc, 0 0 16px #00ffcc;
+}
+
+html.theme-evil-corp.intensity-high #ytd-masthead {
+    background: linear-gradient(180deg, #000511 0%, #001122 100%) !important;
+    border-bottom: 1px solid #00ffcc !important;
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.2);
+}
+
+html.theme-evil-corp.intensity-high ytd-button-renderer yt-button-shape {
+    border: 1px solid #00ffcc !important;
+    background: transparent !important;
+    color: #00ffcc !important;
+}
+
+html.theme-evil-corp.intensity-high ytd-button-renderer yt-button-shape:hover {
+    background: rgba(0, 255, 204, 0.2) !important;
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+}
+
+html.theme-evil-corp.intensity-high ytd-thumbnail {
+    border: 1px solid rgba(0, 255, 204, 0.3);
+}
+
+html.theme-evil-corp.intensity-high ytd-thumbnail:hover {
+    border-color: #00ffcc;
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.4);
+}
+
+html.theme-evil-corp.intensity-high ytd-guide-renderer {
+    border-right: 1px solid rgba(0, 255, 204, 0.3);
+    animation: scan-line 8s linear infinite;
+}
+
+@keyframes scan-line {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 100%; }
+}
+
+html.theme-evil-corp.intensity-high ytd-playlist-panel-renderer #progress-bar {
+    background: linear-gradient(90deg, #005566, #00ffcc, #005566) !important;
+    box-shadow: 0 0 10px #00ffcc;
+    animation: data-flow 2s linear infinite;
+}
+
+@keyframes data-flow {
+    0% { background-position: 0 0; }
+    100% { background-position: 100% 0; }
+}
+
+
+/* 4. PASSIVE AGGRESSIVE (Sterile Luxury) */
+html.theme-passive-aggressive {
+    --yt-spec-base-background: #ffffff !important;
+    --yt-spec-raised-background: #f9f9f9 !important;
+    --yt-spec-menu-background: #ffffff !important;
+    --yt-spec-text-primary: #111111 !important;
+    --yt-spec-text-secondary: #444444 !important;
+    --yt-spec-brand-button-background: #eeeeee !important;
+    --yt-spec-badge-chip-background: #dddddd !important;
+    --yt-spec-icon-active-other: #222222 !important;
+    --yt-spec-icon-inactive: #888888 !important;
+    --ytd-searchbox-background: #ffffff !important;
+}
+
+/* Passive Aggressive - LOW INTENSITY: Nearly normal */
+html.theme-passive-aggressive.intensity-low ytd-app {
+    filter: contrast(1.02) saturate(0.98);
+}
+
+/* Passive Aggressive - MEDIUM INTENSITY: Subtle judgment */
+html.theme-passive-aggressive.intensity-medium ytd-app {
+    filter: contrast(1.05) saturate(0.95);
+}
+
+html.theme-passive-aggressive.intensity-medium ytd-guide-entry-renderer:hover {
+    background: #f5f5f5 !important;
+}
+
+html.theme-passive-aggressive.intensity-medium ytd-thumbnail:hover {
+    border: 1px solid #e5e5e5;
+}
+
+html.theme-passive-aggressive.intensity-medium #video-title:hover {
+    color: #555 !important;
+}
+
+/* Passive Aggressive - HIGH INTENSITY: Full sterile judgment */
+html.theme-passive-aggressive.intensity-high ytd-app {
+    filter: contrast(1.05) saturate(0.95);
+}
+
+html.theme-passive-aggressive.intensity-high ytd-guide-entry-renderer:hover {
+    background: #f0f0f0 !important;
+    border-left: 2px solid #ddd;
+}
+
+html.theme-passive-aggressive.intensity-high ytd-thumbnail:hover {
+    border: 1px solid #ccc;
+    filter: brightness(0.95);
+}
+
+html.theme-passive-aggressive.intensity-high #ytd-masthead {
+    background: #ffffff !important;
+    border-bottom: 1px solid #e0e0e0 !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+html.theme-passive-aggressive.intensity-high ytd-button-renderer yt-button-shape {
+    background: #f5f5f5 !important;
+    border: 1px solid #e0e0e0 !important;
+    color: #333 !important;
+}
+
+html.theme-passive-aggressive.intensity-high ytd-button-renderer yt-button-shape:hover {
+    background: #ebebeb !important;
+    border-color: #d0d0d0;
+}
+
+html.theme-passive-aggressive.intensity-high #video-title {
+    font-weight: 500;
+}
+
+html.theme-passive-aggressive.intensity-high #video-title:hover {
+    color: #666 !important;
+    text-decoration: underline;
+}
+
+html.theme-passive-aggressive.intensity-high ytd-guide-renderer {
+    border-right: 1px solid #e0e0e0;
+}
+
+html.theme-passive-aggressive.intensity-high ytd-playlist-panel-renderer #progress-bar {
+    background: #e0e0e0 !important;
+    border-radius: 2px;
+}
+
+html.theme-passive-aggressive.intensity-high ytd-thumbnail-overlay-time-status-renderer {
+    background: rgba(0, 0, 0, 0.7) !important;
+    border-radius: 2px;
+    font-size: 11px;
+}
+
+html.theme-passive-aggressive.intensity-high yt-notification-action-renderer {
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+}

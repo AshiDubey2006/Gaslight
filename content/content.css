@@ -1,0 +1,307 @@
+/* Base */
+.gaslight-notification {
+    position: fixed;
+    pointer-events: none;
+    z-index: 999999999;
+}
+
+/* Paranoid - Analog Horror */
+.gaslight-notification.theme-paranoid {
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    background: transparent;
+    padding: 20px;
+    font-family: 'Courier New', monospace;
+    font-size: 24px;
+    color: #fff;
+    text-shadow: 0 0 5px rgba(255,255,255,0.5);
+    text-align: center;
+}
+.gaslight-notification.theme-paranoid::before {
+    content: '';
+    position: absolute;
+    top: -10px; left: -10px; right: -10px; bottom: -10px;
+    border: 2px solid #ff0000;
+    opacity: 0;
+    animation: red-flash 5s forwards;
+    pointer-events: none;
+}
+@keyframes red-flash {
+    0% { opacity: 1; }
+    2% { opacity: 0; }
+    4% { opacity: 0.8; border-color: #fff; }
+    6% { opacity: 0; }
+    100% { opacity: 0; }
+}
+.gaslight-notification.theme-paranoid .crt-scanline {
+    position: absolute; top:0; left:0; width:100%; height:100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: -1;
+}
+.gaslight-notification.theme-paranoid .glitch-text {
+    position: relative;
+    animation: text-flicker 0.1s infinite alternate;
+}
+@keyframes text-flicker {
+    0% { opacity: 0.9; text-shadow: 2px 0 red, -2px 0 cyan; }
+    100% { opacity: 1; text-shadow: 1px 0 rgba(255,0,0,0.5); }
+}
+
+/* Cosmic Horror - Ghost in the Machine */
+.gaslight-notification.theme-cosmic-horror {
+    top: 40%; left: 50%; transform: translate(-50%, -50%);
+    font-family: 'Georgia', serif;
+    font-size: 28px;
+    color: #dcdcdc;
+    text-shadow: 0 0 10px #fff, 0 0 20px #aaa, 0 0 30px #555;
+    opacity: 0;
+    animation: ghost-fade 5s forwards;
+    text-align: center;
+    letter-spacing: 2px;
+}
+@keyframes ghost-fade {
+    0% { opacity: 0; filter: blur(10px); transform: translate(-50%, -40%); }
+    20% { opacity: 0.8; filter: blur(1px); transform: translate(-50%, -50%); }
+    80% { opacity: 0.8; filter: blur(2px); }
+    100% { opacity: 0; filter: blur(15px); transform: translate(-50%, -60%); }
+}
+
+/* Cosmic Horror - Eerie Page Overlay (HIGH intensity only) */
+html.theme-cosmic-horror.intensity-high::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 999999;
+    background: radial-gradient(ellipse at center, transparent 0%, rgba(5, 8, 12, 0.3) 100%);
+    animation: cosmic-flicker 15s ease-in-out infinite;
+}
+
+@keyframes cosmic-flicker {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 0.7; }
+    75% { opacity: 0.4; }
+}
+
+/* Cosmic Horror - Subtle noise texture (HIGH intensity only) */
+html.theme-cosmic-horror.intensity-high::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 999998;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E");
+    animation: cosmic-noise 8s steps(5) infinite;
+}
+
+@keyframes cosmic-noise {
+    0% { transform: translate(0, 0); }
+    20% { transform: translate(-1px, 1px); }
+    40% { transform: translate(1px, -1px); }
+    60% { transform: translate(-1px, -1px); }
+    80% { transform: translate(1px, 1px); }
+    100% { transform: translate(0, 0); }
+}
+
+/* Paranoid - CRT scanline overlay (MEDIUM+ intensity) */
+html.theme-paranoid.intensity-medium::before,
+html.theme-paranoid.intensity-high::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 999999;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+    background-size: 100% 4px;
+    animation: crt-flicker 0.1s infinite;
+}
+
+@keyframes crt-flicker {
+    0% { opacity: 0.95; }
+    50% { opacity: 1; }
+    100% { opacity: 0.95; }
+}
+
+/* Paranoid - Red vignette (HIGH intensity only) */
+html.theme-paranoid.intensity-high::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 999998;
+    background: radial-gradient(ellipse at center, transparent 0%, rgba(255, 0, 0, 0.15) 100%);
+    animation: red-pulse-vignette 4s ease-in-out infinite;
+}
+
+@keyframes red-pulse-vignette {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 0.8; }
+}
+
+/* Evil Corp - Digital grid overlay (HIGH intensity only) */
+html.theme-evil-corp.intensity-high::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 999999;
+    background-image:
+        linear-gradient(rgba(0, 255, 204, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 204, 0.02) 1px, transparent 1px);
+    background-size: 20px 20px;
+    animation: grid-drift 30s linear infinite;
+}
+
+@keyframes grid-drift {
+    0% { background-position: 0 0; }
+    100% { background-position: 20px 20px; }
+}
+
+/* Evil Corp - Scan line effect (HIGH intensity only) */
+html.theme-evil-corp.intensity-high::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 999998;
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 255, 204, 0.03) 50%, transparent 100%);
+    background-size: 100% 100px;
+    animation: scan-move 3s linear infinite;
+}
+
+@keyframes scan-move {
+    0% { background-position: 0 -100px; }
+    100% { background-position: 0 100vh; }
+}
+
+/* Passive Aggressive - Subtle judgment overlay */
+html.theme-passive-aggressive::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 999999;
+    background: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.02) 100%);
+}
+
+/* Passive Aggressive - Very subtle vignette */
+html.theme-passive-aggressive::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 999998;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.01) 0%, transparent 50%, rgba(0, 0, 0, 0.01) 100%);
+}
+
+/* Escalation Effects */
+
+/* Escalation Level 1 */
+html.escalation-1 {
+    --glitch-frequency: 15s;
+    --cosmic-opacity: 0.4;
+    --corp-glitch: 0.05;
+    --passive-frequency: 20s;
+}
+
+/* Escalation Level 2 */
+html.escalation-2 {
+    --glitch-frequency: 10s;
+    --cosmic-opacity: 0.5;
+    --corp-glitch: 0.1;
+    --passive-frequency: 15s;
+}
+
+/* Escalation Level 3 */
+html.escalation-3 {
+    --glitch-frequency: 5s;
+    --cosmic-opacity: 0.6;
+    --corp-glitch: 0.15;
+    --passive-frequency: 10s;
+}
+
+/* Accessibility - Reduce Motion */
+html.reduce-motion,
+html.reduce-motion *,
+html.reduce-motion *::before,
+html.reduce-motion *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+}
+
+html.reduce-motion .gaslight-notification {
+    animation: none !important;
+    opacity: 1 !important;
+}
+
+html.reduce-motion .gaslight-loading-overlay {
+    animation: none !important;
+}
+
+/* Evil Corp - Rogue OS */
+.gaslight-notification.theme-evil-corp {
+    bottom: 30px; left: 30px;
+    background: rgba(10, 10, 10, 0.95);
+    border-left: 3px solid #ff4444;
+    padding: 15px 20px;
+    font-family: 'Consolas', 'Courier New', monospace;
+    color: #ff4444;
+    font-size: 14px;
+    text-align: left;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.8);
+    animation: terminal-boot 0.3s ease-out;
+}
+.gaslight-notification.theme-evil-corp .sys-log {
+    font-size: 10px;
+    opacity: 0.6;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+.gaslight-notification.theme-evil-corp .blink-cursor {
+    animation: blink 1s step-end infinite;
+}
+@keyframes terminal-boot {
+    0% { transform: scaleY(0); opacity: 0; }
+    100% { transform: scaleY(1); opacity: 1; }
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+/* Passive Aggressive - Subtle/Native */
+.gaslight-notification.theme-passive-aggressive {
+    bottom: 20px; right: 20px;
+    background: #ffffff;
+    color: #222;
+    border: 1px solid #dcdcdc;
+    padding: 12px 20px;
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    animation: slide-up 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+@keyframes slide-up {
+    0% { transform: translateY(20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Loading Overlay */
+.gaslight-loading-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 99999999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+.gaslight-loading-text {
+    color: #888;
+    font-family: monospace;
+    font-size: 16px;
+    animation: blink 2s infinite;
+}

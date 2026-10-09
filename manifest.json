@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+  "name": "gaslight.exe",
+  "version": "1.0.0",
+  "description": "The internet is fine. You're just remembering it wrong.",
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "*://*.youtube.com/*"
+  ],
+  "action": {
+    "default_popup": "popup/index.html",
+    "default_title": "gaslight.exe"
+  },
+  "options_page": "options/index.html",
+  "background": {
+    "service_worker": "background/service-worker.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/*"],
+      "js": [
+        "shared/constants.js",
+        "shared/storage.js",
+        "shared/dialogue.js",
+        "content/distortion-engine.js",
+        "content/message-engine.js",
+        "content/random-events.js",
+        "content/sound-system.js",
+        "content/escalation-system.js",
+        "content/memory-system.js",
+        "content/dynamic-distortion.js",
+        "content/content.js"
+      ],
+      "css": ["content/content.css", "content/youtube_themes.css"],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ]
+}

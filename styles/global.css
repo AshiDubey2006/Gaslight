@@ -1,0 +1,17 @@
+body {
+    background-color: #050505;
+    color: #eee;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+}
+h1, h2, h3 {
+    font-family: monospace;
+    font-weight: normal;
+}
+* {
+    box-sizing: border-box;
+}
+::selection {
+    background: #39ff14;
+    color: #000;
+}
