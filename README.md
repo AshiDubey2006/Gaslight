@@ -1,15 +1,5 @@
-<div align="center">
-
-```
-   ____                 _ _       _     _       _             
-  / ___| __ _ ___  ___ | (_) __ _| |__ | |_    (_)___  ___    
- | |  _ / _` / __|/ _ \| | |/ _` | '_ \| __|   | / __|/ _ \   
- | |_| | (_| \__ \ (_) | | | (_| | | | | |_  _ | \__ \  __/   
-  \____|\__,_|___/\___/|_|_|\__, |_| |_|\__|(_)/ |___/\___|   
-                            |___/            |__/             
-```
-
-# `gaslight.exe`
+<div align="left">
+# `Gaslight.exe`
 ### *"The internet is fine. You're just remembering it wrong."*
 
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-brightgreen.svg?style=flat-square)](#)
@@ -17,7 +7,7 @@
 [![Reality Status](https://img.shields.io/badge/Reality%20Status-Questionable-red.svg?style=flat-square)](#)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](#)
 
-<p align="center">
+<p align="left">
   A psychological satire browser extension that subtly distorts the modern web into an existential descent.
   <br />
   Buttons subtly alter their confessions. The UI drifts towards your cursor. The page remembers what you looked at.
